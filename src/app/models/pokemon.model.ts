@@ -7,3 +7,6 @@ export interface PokemonResponse {
   count: number;
   results: PokemonSummary[];
 }
+
+export * from './evolution.model';
+
