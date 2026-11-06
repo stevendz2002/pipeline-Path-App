@@ -17,8 +17,13 @@ h1 { margin: .5rem 0 1rem; font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.0
 .pokemon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 2rem; }
 .pokemon-card, .info-panel { padding: 1.25rem; border: 1px solid #263b5c; border-radius: .75rem; background: #111c30; }
 .pokemon-card { text-align: center; } .pokemon-card img { width: 120px; height: 120px; image-rendering: pixelated; } .pokemon-card a { color: #7dd3fc; }
-.status { color: #7dd3fc; } .error { color: #fca5a5; }
-
 .status { color: #7dd3fc; } .error { color: #fca5a5; } code { color: #fbbf24; }
+.zone-selector { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0; }
+.zone-pill { border: 1px solid #263b5c; background: #111c30; color: #a7b6ce; padding: .5rem 1rem; border-radius: 9999px; cursor: pointer; font-family: inherit; font-size: .95rem; font-weight: 600; transition: all .2s ease; }
+.zone-pill:hover { background: #263b5c; color: #fff; }
+.zone-pill.active { background: #fbbf24; color: #111827; border-color: #fbbf24; }
+.zone-summary { display: flex; justify-content: space-between; align-items: center; margin: 1.5rem 0 0.5rem; padding-bottom: .75rem; border-bottom: 1px solid #22314b; flex-wrap: wrap; gap: .5rem; }
+.zone-summary h2 { margin: 0; font-size: 1.4rem; }
+.badge { display: inline-block; padding: .25rem .65rem; border-radius: 9999px; background: #263b5c; color: #7dd3fc; font-size: .85rem; font-weight: 600; }
 footer { padding: 1.5rem 6vw; border-top: 1px solid #22314b; color: #71819b; text-align: center; } footer a { color: #7dd3fc; }
 @media (max-width: 600px) { .topbar { align-items: flex-start; gap: 1rem; flex-direction: column; } nav { width: 100%; justify-content: space-between; } nav a { padding: .5rem; } .main-content { padding-top: 2.5rem; } }
