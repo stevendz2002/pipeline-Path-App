@@ -13,6 +13,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
           <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
           <a routerLink="/pokemon" routerLinkActive="active">Pokémon</a>
           <a routerLink="/zonas" routerLinkActive="active">Zonas</a>
+          <a routerLink="/evolutions" routerLinkActive="active">Evoluciones</a>
           <a routerLink="/about" routerLinkActive="active">Proyecto</a>
         </nav>
       </header>

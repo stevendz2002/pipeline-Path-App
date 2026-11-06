@@ -14,9 +14,16 @@ h1 { margin: .5rem 0 1rem; font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.0
 .feature-grid article { padding: 1.25rem; border: 1px solid #263b5c; border-radius: .75rem; background: #111c30; }
 .feature-grid span { color: #fbbf24; } h2 { margin-top: .5rem; }
 .page-heading { max-width: 650px; } .page-heading h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
-.pokemon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 2rem; }
-.pokemon-card, .info-panel { padding: 1.25rem; border: 1px solid #263b5c; border-radius: .75rem; background: #111c30; }
+.pokemon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+.evolution-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.pokemon-card, .info-panel { padding: 1.5rem; border: 1px solid #263b5c; border-radius: .75rem; background: #111c30; }
 .pokemon-card { text-align: center; } .pokemon-card img { width: 120px; height: 120px; image-rendering: pixelated; } .pokemon-card a { color: #7dd3fc; }
+.evolution-card { display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.evolution-chain-flow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; }
+.evolution-stage { display: flex; flex-direction: column; align-items: center; }
+.evolution-stage img { width: 72px; height: 72px; image-rendering: pixelated; }
+.stage-name { font-size: .8rem; color: #a7b6ce; font-weight: 500; }
+.evolution-arrow { color: #fbbf24; font-size: 1.1rem; font-weight: bold; }
 .status { color: #7dd3fc; } .error { color: #fca5a5; } code { color: #fbbf24; }
 .zone-selector { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0; }
 .zone-pill { border: 1px solid #263b5c; background: #111c30; color: #a7b6ce; padding: .5rem 1rem; border-radius: 9999px; cursor: pointer; font-family: inherit; font-size: .95rem; font-weight: 600; transition: all .2s ease; }
