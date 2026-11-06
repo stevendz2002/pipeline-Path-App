@@ -14,6 +14,6 @@ describe('AppComponent', () => {
     fixture.detectChanges();
 
     expect(fixture.nativeElement.querySelector('.brand').textContent).toContain('PokéDex');
-    expect(fixture.nativeElement.querySelectorAll('nav a').length).toBe(3);
+    expect(fixture.nativeElement.querySelectorAll('nav a').length).toBe(4);
   });
 });
