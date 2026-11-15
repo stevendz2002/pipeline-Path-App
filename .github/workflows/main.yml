@@ -4,12 +4,12 @@ on:
   push:
     branches: ["master"]
 
+  pull_request:
+    branches: [master]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: "pages"
@@ -18,6 +18,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
 
     steps:
       # 1. Descargar el código
@@ -32,7 +35,9 @@ jobs:
           cache: npm
 
       # 3. Configurar GitHub Pages
-      - name: Setup Pages
+      - name: Detectar la ruta pública de GitHub Pages
+        id: pages
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
 
       # 4. Instalar dependencias
@@ -45,20 +50,32 @@ jobs:
 
       # 6. Generar build de Angular
       - name: Build Angular
-        run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
-        
+        env:
+          PAGES_BASE: ${{ steps.pages.outputs.base_path }}
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
+          PAGES_CONFIGURED: ${{ steps.pages.outcome }}
+        run: |
+          base="$PAGES_BASE"
+          if [ "$PAGES_CONFIGURED" = skipped ]; then base="/$REPOSITORY_NAME"; fi
+          npm run build -- --base-href "${base%/}/"
+
       # 7. Configure SPA fallback (Opcional si no se usa el Hash)
       - name: Configure GitHub Pages fallback
         run: cp ./dist/Pipeline-Path-App/browser/index.html ./dist/Pipeline-Path-App/browser/404.html
 
       # 8. Subir artefacto generado
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
         with:
           path: ./dist/Pipeline-Path-App/browser
 
   # Despliegue
   deploy:
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
